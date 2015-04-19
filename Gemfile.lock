@@ -1,0 +1,27 @@
+GIT
+  remote: git://github.com/atig/atig.git
+  revision: b822c165c82ca52ac26aaf8f5ac0fa82b4a17880
+  specs:
+    atig (0.4.5)
+      net-irc
+      oauth
+      sqlite3 (>= 1.3.2)
+      twitter-text (~> 1.7.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    net-irc (0.0.9)
+    oauth (0.4.7)
+    sqlite3 (1.3.10)
+    twitter-text (1.7.0)
+      unf (~> 0.1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  atig!
