@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Tomohiro/iig.git
-  revision: 1455c3481927215671569fab2c3098f03e52d723
+  revision: 0f67113aac25f0602b87fbfe4391ff1c05b44cad
   specs:
-    iig (0.0.1)
+    iig (0.1.0)
       mechanize
       net-irc
       slop
