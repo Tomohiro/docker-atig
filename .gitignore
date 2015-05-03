@@ -1,2 +1,6 @@
+# Ruby
 .bundle
 vendor
+
+# Vagrant
+.vagrant
