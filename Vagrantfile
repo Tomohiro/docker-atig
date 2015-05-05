@@ -5,6 +5,9 @@
 VAGRANTFILE_API_VERSION = '2'
 
 NUMBER_INSTANCES = 1
+FORWARDED_PORTS  = {
+  16668 => 16668
+}
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # always use Vagrants insecure key
@@ -31,6 +34,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define vm_name do |cluster|
       cluster.vm.hostname = vm_name
       cluster.vm.network :private_network, ip: "172.17.8.#{i + 100}"
+
+      config.vm.network 'forwarded_port', guest: 2375, host: (2375 + i - 1), auto_correct: true
+
+      FORWARDED_PORTS.each do |guest, host|
+        config.vm.network 'forwarded_port', guest: guest, host: host, auto_correct: true
+      end
     end
   end
 end
