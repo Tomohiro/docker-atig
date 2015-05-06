@@ -4,8 +4,9 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
 
-NUMBER_INSTANCES = 1
-FORWARDED_PORTS  = {
+CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), 'cloud-config.yml')
+NUMBER_INSTANCES  = 1
+FORWARDED_PORTS   = {
   16668 => 16668
 }
 
@@ -24,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # plugin conflict
-  if Vagrant.has_plugin?('vagrant-vbguest') then
+  if Vagrant.has_plugin?('vagrant-vbguest')
     config.vbguest.auto_update = false
   end
 
@@ -39,6 +40,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       FORWARDED_PORTS.each do |guest, host|
         config.vm.network 'forwarded_port', guest: guest, host: host, auto_correct: true
+      end
+
+      if File.exists?(CLOUD_CONFIG_PATH)
+        config.vm.provision :file, source: "#{CLOUD_CONFIG_PATH}", destination: '/tmp/vagrantfile-user-data'
+        config.vm.provision :shell, inline: 'mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant/', privileged: true
       end
     end
   end
