@@ -36,15 +36,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cluster.vm.hostname = vm_name
       cluster.vm.network :private_network, ip: "172.17.8.#{i + 100}"
 
-      config.vm.network 'forwarded_port', guest: 2375, host: (2375 + i - 1), auto_correct: true
+      cluster.vm.network 'forwarded_port', guest: 2375, host: (2375 + i - 1), auto_correct: true
 
       FORWARDED_PORTS.each do |guest, host|
-        config.vm.network 'forwarded_port', guest: guest, host: host, auto_correct: true
+        cluster.vm.network 'forwarded_port', guest: guest, host: host, auto_correct: true
       end
 
       if File.exists?(CLOUD_CONFIG_PATH)
-        config.vm.provision :file, source: "#{CLOUD_CONFIG_PATH}", destination: '/tmp/vagrantfile-user-data'
-        config.vm.provision :shell, inline: 'mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant/', privileged: true
+        cluster.vm.provision :file, source: "#{CLOUD_CONFIG_PATH}", destination: '/tmp/vagrantfile-user-data'
+        cluster.vm.provision :shell, inline: 'mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant/', privileged: true
       end
     end
   end
