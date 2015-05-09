@@ -32,6 +32,7 @@ coreos:
       [Install]
       WantedBy=sockets.target
   - name: iptables-restore.service
+    command: start
     enable: true
 write_files:
   - path: /var/lib/iptables/rules-save
