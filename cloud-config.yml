@@ -34,6 +34,16 @@ coreos:
   - name: iptables-restore.service
     command: start
     enable: true
+  - name: settimezone.service
+    command: start
+    content: |
+      [Unit]
+      Description=Set the timezone
+
+      [Service]
+      ExecStart=/usr/bin/timedatectl set-timezone Asia/Tokyo
+      RemainAfterExit=yes
+      Type=oneshot
 write_files:
   - path: /var/lib/iptables/rules-save
     permissions: 420
