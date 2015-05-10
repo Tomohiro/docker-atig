@@ -1,50 +1,5 @@
 #cloud-config
 
-coreos:
-  etcd:
-    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-    # specify the initial size of your cluster with ?size=X
-    discovery: https://discovery.etcd.io/<token>
-    # multi-region deployments, multi-cloud deployments, and droplets without
-    # private networking need to use $public_ipv4
-    addr: $public_ipv4:4001
-    peer-addr: $public_ipv4:7001
-  fleet:
-    public-ip: $public_ipv4
-  flannel:
-    interface: $public_ipv4
-  units:
-  - name: etcd.service
-    command: start
-  - name: fleet.service
-    command: start
-  - name: docker-tcp.socket
-    command: start
-    enable: true
-    content: |
-      [Unit]
-      Description=Docker Socket for the API
-
-      [Socket]
-      ListenStream=2375
-      Service=docker.service
-      BindIPv6Only=both
-
-      [Install]
-      WantedBy=sockets.target
-  - name: iptables-restore.service
-    command: start
-    enable: true
-  - name: settimezone.service
-    command: start
-    content: |
-      [Unit]
-      Description=Set the timezone
-
-      [Service]
-      ExecStart=/usr/bin/timedatectl set-timezone Asia/Tokyo
-      RemainAfterExit=yes
-      Type=oneshot
 write_files:
   - path: /var/lib/iptables/rules-save
     permissions: 420
@@ -65,3 +20,47 @@ write_files:
       -A INPUT -p icmp -m icmp --icmp-type 3 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 11 -j ACCEPT
       COMMIT
+
+coreos:
+  etcd:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+    # specify the initial size of your cluster with ?size=X
+    discovery: https://discovery.etcd.io/<token>
+    # multi-region deployments, multi-cloud deployments, and droplets without
+    # private networking need to use $public_ipv4
+    addr: $public_ipv4:4001
+    peer-addr: $public_ipv4:7001
+  fleet:
+    public-ip: $public_ipv4
+  flannel:
+    interface: $public_ipv4
+  units:
+  - name: etcd.service
+    command: start
+  - name: fleet.service
+    command: start
+  - name: docker-tcp.socket
+    command: start
+    content: |
+      [Unit]
+      Description=Docker Socket for the API
+
+      [Socket]
+      ListenStream=2375
+      Service=docker.service
+      BindIPv6Only=both
+
+      [Install]
+      WantedBy=sockets.target
+  - name: iptables-restore.service
+    command: start
+  - name: settimezone.service
+    command: start
+    content: |
+      [Unit]
+      Description=Set the timezone
+
+      [Service]
+      ExecStart=/usr/bin/timedatectl set-timezone Asia/Tokyo
+      RemainAfterExit=yes
+      Type=oneshot
