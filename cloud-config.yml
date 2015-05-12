@@ -16,6 +16,8 @@ write_files:
       -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
       -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
       -A INPUT -p tcp -m tcp --dport 2375 -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 2379 -j ACCEPT
+      -A INPUT -p tcp -m tcp --dport 2380 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 0 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 3 -j ACCEPT
       -A INPUT -p icmp -m icmp --icmp-type 11 -j ACCEPT
@@ -40,10 +42,8 @@ coreos:
     # multi-region and multi-cloud deployments need to use $public_ipv4
     advertise-client-urls: http://$public_ipv4:2379
     initial-advertise-peer-urls: http://$private_ipv4:2380
-    # listen on both the official ports and the legacy ports
-    # legacy ports can be omitted if your application doesn't depend on them
-    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
+    listen-client-urls: http://0.0.0.0:2379
+    listen-peer-urls: http://$private_ipv4:2380
   fleet:
     public-ip: $public_ipv4
   flannel:
