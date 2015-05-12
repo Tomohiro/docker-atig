@@ -1,5 +1,9 @@
 #cloud-config
 
+users:
+  - name: core
+    coreos-ssh-import-github: Tomohiro
+
 write_files:
   - path: /var/lib/iptables/rules-save
     permissions: 420
