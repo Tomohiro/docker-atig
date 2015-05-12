@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if File.exists?(CLOUD_CONFIG_PATH)
       override.vm.provision :file, source: "#{CLOUD_CONFIG_PATH}", destination: '/tmp/vagrantfile-user-data'
       override.vm.provision :shell, inline: 'mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant'
+      override.vm.provision :shell, inline: 'coreos-cloudinit --from-file=/var/lib/coreos-vagrant/vagrantfile-user-data'
     end
 
     # On VirtualBox, we don't have guest additions or a functional vboxsf
