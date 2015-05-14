@@ -1,16 +1,23 @@
 Dockerfiles
 ================================================================================
 
-Configuration
+Configuration CoreOS
 --------------------------------------------------------------------------------
 
 ### Development
 
-```sh
-$ vagrant provision
-$ vagrant ssh
-```
+Edit `cloud-config.yml`:
 
 ```sh
-$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrantfile-user-data
+$ cp cloud-config.yml.example cloud-config.yml
 ```
+
+Apply changes:
+
+```sh
+$ vagrant provision
+```
+
+### Production
+
+TODO
