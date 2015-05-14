@@ -22,6 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       override.vm.provision :shell, inline: 'coreos-cloudinit --from-file=/var/lib/coreos-vagrant/vagrantfile-user-data'
     end
 
+    override.vm.synced_folder '.', '/home/core/share', id: 'core', nfs: true, mount_options: ['nolock,vers=3,udp']
+
     # On VirtualBox, we don't have guest additions or a functional vboxsf
     # in CoreOS, so tell Vagrant that so it can be smarter.
     provider.check_guest_additions = false
