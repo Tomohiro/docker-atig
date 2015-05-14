@@ -4,3 +4,6 @@ vendor
 
 # Vagrant
 .vagrant
+
+# CoreOS
+cloud-config.yml
