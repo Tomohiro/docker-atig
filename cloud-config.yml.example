@@ -2,7 +2,7 @@
 
 users:
   - name: core
-    coreos-ssh-import-github: Tomohiro
+    coreos-ssh-import-github: <name>
 
 write_files:
   - path: /var/lib/iptables/rules-save
@@ -31,6 +31,7 @@ write_files:
       UsePrivilegeSeparation sandbox
       Subsystem sftp internal-sftp
 
+      UseDNS no
       PermitRootLogin no
       AllowUsers core
       PasswordAuthentication no
@@ -50,12 +51,6 @@ coreos:
   flannel:
     interface: $public_ipv4
   units:
-    - name: sshd.socket
-      command: restart
-      content: |
-        [Socket]
-        ListenStream=22
-        Accept=yes
     - name: etcd2.service
       command: start
     - name: fleet.service
