@@ -5,7 +5,8 @@
 VAGRANTFILE_API_VERSION = '2'
 
 CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), 'cloud-config.yml')
-NUMBER_INSTANCES  = 1
+NUMBER_INSTANCES = ENV['NUMBER_INSTANCES'] || 1
+PUBLIC_SSH_PORT  = ENV['PUBLIC_SSH_PORT'] || 22
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # always use Vagrants insecure key
@@ -21,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       override.vm.provision :shell, inline: 'mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant'
     end
 
+    override.ssh.guest_port = PUBLIC_SSH_PORT
     override.vm.synced_folder '.', '/home/core/share', id: 'core', nfs: true, mount_options: ['nolock,vers=3,udp']
 
     # On VirtualBox, we don't have guest additions or a functional vboxsf
@@ -43,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       cluster.vm.provider :virtualbox do |_, override|
         override.vm.network :private_network, ip: "172.17.8.#{i + 100}"
+        override.vm.network :forwarded_port, guest: PUBLIC_SSH_PORT, host: 2200 + i, id: 'ssh'
       end
     end
   end
