@@ -13,8 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # For Development settings
   config.vm.provider :virtualbox do |provider, override|
-    override.vm.box     = 'coreos-alpha'
-    override.vm.box_url = 'http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json'
+    override.vm.box     = 'coreos-stable'
+    override.vm.box_url = 'http://stable.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json'
 
     if File.exists?(CLOUD_CONFIG_PATH)
       override.vm.provision :file, source: "#{CLOUD_CONFIG_PATH}", destination: '/tmp/vagrantfile-user-data'
