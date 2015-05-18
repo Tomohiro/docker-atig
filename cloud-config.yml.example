@@ -2,7 +2,7 @@
 
 users:
   - name: core
-    coreos-ssh-import-github: Tomohiro
+    coreos-ssh-import-github: <name>
 
 write_files:
   - path: /var/lib/iptables/rules-save
@@ -40,7 +40,7 @@ coreos:
     # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
     # specify the intial size of your cluster with ?size=X
     # WARNING: replace each time you 'vagrant destroy'
-    discovery: https://discovery.etcd.io/a044bd090ca2c333a7c62e0cb4a244c1
+    discovery: https://discovery.etcd.io/<token>
     # multi-region deployments, multi-cloud deployments, and droplets without
     # private networking need to use $public_ipv4
     addr: $private_ipv4:4001
