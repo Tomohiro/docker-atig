@@ -7,3 +7,6 @@ vendor
 
 # CoreOS
 cloud-config.yml
+
+# Direnv
+.envrc
