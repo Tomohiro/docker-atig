@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = '2'
 
 CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), 'cloud-config.yml')
-NUMBER_INSTANCES = ENV['NUMBER_INSTANCES'] || 1
+NUMBER_INSTANCES = ENV['NUMBER_INSTANCES'].to_i || 1
 PUBLIC_SSH_PORT  = ENV['PUBLIC_SSH_PORT'] || 22
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -34,6 +34,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if Vagrant.has_plugin?('vagrant-vbguest')
       override.vbguest.auto_update = false
     end
+  end
+
+  # For Production settings
+  config.vm.provider :digital_ocean do |provider, override|
+    override.vm.box               = 'digital_ocean'
+    override.vm.box_url           = 'https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
+    override.ssh.private_key_path = '~/.ssh/id_rsa'
+    provider.token                = ENV['DIGITAL_OCEAN_TOKEN']
+    provider.image                = 'coreos-stable'
+    provider.region               = 'sgp1'
+    provider.size                 = '512mb'
+    provider.setup                = false
+    provider.private_networking   = true
+    provider.ssh_key_name         = ENV['DIGITAL_OCEAN_SSH_KEY_NAME']
+    provider.user_data            = File.read('cloud-config.yml')
   end
 
   # Setup CoreOS clusters
