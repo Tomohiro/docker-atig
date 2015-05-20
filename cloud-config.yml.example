@@ -42,7 +42,7 @@ coreos:
     addr: $private_ipv4:4001
     peer-addr: $private_ipv4:7001
   fleet:
-    public-ip: $public_ipv4
+    public-ip: $private_ipv4
   flannel:
     interface: $public_ipv4
   units:
