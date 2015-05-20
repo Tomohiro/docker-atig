@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Setup CoreOS clusters
   (1..NUMBER_INSTANCES).each do |i|
-    vm_name = 'core-%02d' % i
+    vm_name = 'core-%2d' % i
 
     config.vm.define vm_name do |cluster|
       cluster.vm.hostname = vm_name
