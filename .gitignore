@@ -5,6 +5,10 @@ vendor
 # Vagrant
 .vagrant
 
+# Terraform
+terraform.tfstate
+terraform.tfstate.backup
+
 # CoreOS
 cloud-config.yml
 
