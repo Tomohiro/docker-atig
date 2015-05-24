@@ -36,21 +36,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  # For Production settings
-  config.vm.provider :digital_ocean do |provider, override|
-    override.vm.box               = 'digital_ocean'
-    override.vm.box_url           = 'https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
-    override.ssh.private_key_path = '~/.ssh/id_rsa'
-    provider.token                = ENV['DIGITAL_OCEAN_TOKEN']
-    provider.image                = 'coreos-stable'
-    provider.region               = 'sgp1'
-    provider.size                 = '512mb'
-    provider.setup                = false
-    provider.private_networking   = true
-    provider.ssh_key_name         = ENV['DIGITAL_OCEAN_SSH_KEY_NAME']
-    provider.user_data            = File.read('cloud-config.yml')
-  end
-
   # Setup CoreOS clusters
   (1..NUMBER_INSTANCES).each do |i|
     vm_name = 'core-%d' % i
