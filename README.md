@@ -1,15 +1,41 @@
 Dockerfiles
 ================================================================================
 
+Getting Started
+--------------------------------------------------------------------------------
+
+### Configuration
+
+Create a `cloud-config.yml`:
+
+```sh
+$ cp cloud-config.yml.example cloud-config.yml
+```
+
+### Development
+
+Launch development machine:
+
+```sh
+$ vagrant up
+```
+
+### Production
+
+```sh
+$ terraform apply
+```
+
+
 Configuration CoreOS
 --------------------------------------------------------------------------------
 
 ### Development
 
-Edit `cloud-config.yml`:
+Edit the `cloud-config.yml`:
 
 ```sh
-$ cp cloud-config.yml.example cloud-config.yml
+$ vi cloud-config.yml
 ```
 
 Upload `cloud-config.yml` to instances:
@@ -22,10 +48,5 @@ Apply changes:
 
 ```sh
 $ vagrant ssh
-core@core-0X ~$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrantfile-user-data
+core@core-X ~$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrantfile-user-data
 ```
-
-
-### Production
-
-TODO
