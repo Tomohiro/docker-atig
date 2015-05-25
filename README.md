@@ -1,8 +1,32 @@
 :whale: Dockerfiles
 ================================================================================
 
+
+Requirements
+--------------------------------------------------------------------------------
+
+- Direnv
+- Terraform
+
+
 Getting Started
 --------------------------------------------------------------------------------
+
+### Create the `.envrc` to export environment variables
+
+```sh
+$ cp .envrc.example .envirc
+$ vi .envrc
+$ direnv allow
+```
+
+### Install dependency tools
+
+Install the Digtal Ocean command-line tool:
+
+```sh
+$ bundle install --path vendor/bundle
+```
 
 ### Configuration
 
@@ -20,23 +44,37 @@ Launch development machine:
 $ vagrant up
 ```
 
-### Production
+
+Deploy CoreOS clusters to Digital Ocean
+--------------------------------------------------------------------------------
+
+Create clusters:
 
 ```sh
+$ terraform plan   # Check your plan
 $ terraform apply
+```
+
+Login to a CoreOS server:
+
+```sh
+$ bundle exec tugboat core-X -u core -p 2222  # SSH port is 2222 in this example
 ```
 
 
 Configuration CoreOS
 --------------------------------------------------------------------------------
 
-### Development
+### Configure cloud-config
 
 Edit the `cloud-config.yml`:
 
 ```sh
 $ vi cloud-config.yml
 ```
+
+
+### Apply to the development
 
 Upload `cloud-config.yml` to instances:
 
@@ -49,4 +87,12 @@ Apply changes:
 ```sh
 $ vagrant ssh
 core@core-X ~$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrantfile-user-data
+```
+
+
+### Apply to the production
+
+```sh
+$ terraform plan
+$ terraform apply
 ```
