@@ -6,8 +6,7 @@ vendor
 .vagrant
 
 # Terraform
-terraform.tfstate
-terraform.tfstate.backup
+.terraform
 
 # CoreOS
 cloud-config.yml

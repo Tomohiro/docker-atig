@@ -1,4 +1,5 @@
 export NUMBER_INSTANCES=1
 export PUBLIC_SSH_PORT=2222
-export TF_VAR_api_token=<your token>
+export ATLAS_TOKEN=<your atlas token>
+export TF_VAR_api_token=<your digitalocean token>
 export TF_VAR_ssh_key_id=<your ssh key id>

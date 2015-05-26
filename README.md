@@ -65,12 +65,18 @@ $ bundle exec tugboat core-X -u core -p 2222  # SSH port is 2222 in this example
 Configuration CoreOS
 --------------------------------------------------------------------------------
 
-### Configure cloud-config
+### Configure `cloud-config.yml` or `clusters.tf`
 
 Edit the `cloud-config.yml`:
 
 ```sh
 $ vi cloud-config.yml
+```
+
+Edit the `clusters.tf`:
+
+```sh
+$ vi clusters.tf
 ```
 
 
@@ -93,6 +99,8 @@ core@core-X ~$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrant
 ### Apply to the production
 
 ```sh
+$ terraform remote pull
 $ terraform plan
 $ terraform apply
+$ terraform remote push
 ```
