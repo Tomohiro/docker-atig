@@ -1,0 +1,15 @@
+[Unit]
+Description=(Another) Twitter IRC Gateway
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill atig
+ExecStartPre=-/usr/bin/docker rm atig
+ExecStartPre=/usr/bin/docker pull tomohiro/atig
+ExecStart=/usr/bin/docker run --rm --name atig --net container:znc tomohiro/atig
+ExecStop=/usr/bin/docker stop atig
+
+[X-Fleet]
+Conflicts=atig.service
