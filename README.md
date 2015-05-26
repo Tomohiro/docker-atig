@@ -45,10 +45,10 @@ $ vagrant up
 ```
 
 
-Deploy CoreOS clusters to Digital Ocean
+Deploy CoreOS cluster to Digital Ocean
 --------------------------------------------------------------------------------
 
-Create clusters:
+Create cluster:
 
 ```sh
 $ terraform plan   # Check your plan
@@ -65,7 +65,7 @@ $ bundle exec tugboat core-X -u core -p 2222  # SSH port is 2222 in this example
 Configuration CoreOS
 --------------------------------------------------------------------------------
 
-### Configure `cloud-config.yml` or `clusters.tf`
+### Configure `cloud-config.yml` or `cluster.tf`
 
 Edit the `cloud-config.yml`:
 
@@ -73,10 +73,10 @@ Edit the `cloud-config.yml`:
 $ vi cloud-config.yml
 ```
 
-Edit the `clusters.tf`:
+Edit the `cluster.tf`:
 
 ```sh
-$ vi clusters.tf
+$ vi cluster.tf
 ```
 
 
