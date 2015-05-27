@@ -8,7 +8,7 @@ TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill atig
 ExecStartPre=-/usr/bin/docker rm atig
 ExecStartPre=/usr/bin/docker pull tomohiro/atig
-ExecStart=/usr/bin/docker run --rm --name atig --net container:znc tomohiro/atig
+ExecStart=/usr/bin/docker run --rm --name atig --net container:znc -v /home/core/.atig:/root/.atig tomohiro/atig
 ExecStop=/usr/bin/docker stop atig
 
 [X-Fleet]
