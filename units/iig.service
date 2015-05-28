@@ -4,7 +4,8 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-TimeoutStartSec=0
+Restart=always
+TimeoutStartSec=120
 ExecStartPre=-/usr/bin/docker kill iig
 ExecStartPre=-/usr/bin/docker rm iig
 ExecStartPre=/usr/bin/docker pull tomohiro/iig
