@@ -1,0 +1,16 @@
+[Unit]
+Description=(Another) GitHub IRC Gateway
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+TimeoutStartSec=120
+ExecStartPre=-/usr/bin/docker kill agig
+ExecStartPre=-/usr/bin/docker rm agig
+ExecStartPre=/usr/bin/docker pull tomohiro/agig
+ExecStart=/usr/bin/docker run --rm --name agig --net container:znc tomohiro/agig
+ExecStop=/usr/bin/docker stop agig
+
+[X-Fleet]
+Conflicts=agig.service
