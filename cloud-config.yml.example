@@ -43,6 +43,7 @@ coreos:
     peer-addr: $private_ipv4:7001
   fleet:
     public-ip: $private_ipv4
+    metadata: region=asia
   flannel:
     interface: $public_ipv4
   units:
