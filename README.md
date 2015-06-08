@@ -100,6 +100,7 @@ core@core-X ~$ sudo coreos-cloudinit --from-file /var/lib/coreos-vagrant/vagrant
 ### Apply to the production
 
 ```sh
+$ terraform remote config -backend-config "name=tomohiro/cluster"
 $ terraform remote pull
 $ terraform plan
 $ terraform apply
