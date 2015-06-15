@@ -5,6 +5,12 @@ ZNC IRC bouncer for Docker
 Getting Started
 --------------------------------------------------------------------------------
 
+Pull image from Docker Hub:
+
+```sh
+$ docker pull tomohiro/znc
+```
+
 Create configs:
 
 ```sh
