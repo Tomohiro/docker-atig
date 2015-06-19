@@ -1,6 +1,10 @@
 variable "api_token" {}
 variable "ssh_key_id" {}
 
+atlas {
+    name = "tomohiro/cluster"
+}
+
 provider "digitalocean" {
     token = "${var.api_token}"
 }
