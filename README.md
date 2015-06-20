@@ -9,6 +9,11 @@ Requirements
 - Direnv
 - Terraform
 
+### Provider tokens
+
+- Atlas
+- Digital Ocean
+
 
 Getting Started
 --------------------------------------------------------------------------------

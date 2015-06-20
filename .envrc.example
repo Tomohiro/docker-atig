@@ -1,5 +1,11 @@
+# Vagrant
 export NUMBER_INSTANCES=1
 export PUBLIC_SSH_PORT=2222
+
+# Atlas
 export ATLAS_TOKEN=<your atlas token>
-export TF_VAR_api_token=<your digitalocean token>
+
+# Terraform
+export TF_VAR_atlas_token=$ATLAS_TOKEN
+export TF_VAR_digitalocean_token=<your digitalocean token>
 export TF_VAR_ssh_key_id=<your ssh key id>

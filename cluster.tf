@@ -1,12 +1,17 @@
-variable "api_token" {}
+variable "atlas_token" {}
+variable "digitalocean_token" {}
 variable "ssh_key_id" {}
 
 atlas {
     name = "tomohiro/cluster"
 }
 
+provider "atlas" {
+    token = "${var.atlas_token}"
+}
+
 provider "digitalocean" {
-    token = "${var.api_token}"
+    token = "${var.digitalocean_token}"
 }
 
 resource "digitalocean_droplet" "core-1" {
