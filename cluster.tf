@@ -15,7 +15,7 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_droplet" "core-1" {
-    image              = "coreos-stable"
+    image              = "11833262"
     name               = "core-1"
     region             = "sgp1"
     size               = "512mb"
