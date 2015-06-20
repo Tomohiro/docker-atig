@@ -22,5 +22,5 @@ resource "digitalocean_droplet" "core-1" {
     ipv6               = false
     private_networking = true
     ssh_keys           = ["${var.ssh_key_id}"]
-    user_data          = "${file("cloud-config.yml")}"
+    user_data          = "${file("user-data.yml")}"
 }

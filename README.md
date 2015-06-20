@@ -36,10 +36,10 @@ $ bundle install --path vendor/bundle
 
 ### Configuration
 
-Create a `cloud-config.yml`:
+Create a `user-data.yml`:
 
 ```sh
-$ cp cloud-config.yml.example cloud-config.yml
+$ cp user-data.yml.example user-data.yml
 ```
 
 ### Development
@@ -71,12 +71,12 @@ $ bundle exec tugboat core-X -u core -p 2222  # SSH port is 2222 in this example
 Configuration CoreOS
 --------------------------------------------------------------------------------
 
-### Configure `cloud-config.yml` or `cluster.tf`
+### Configure `user-data.yml` or `cluster.tf`
 
-Edit the `cloud-config.yml`:
+Edit the `user-data.yml`:
 
 ```sh
-$ vi cloud-config.yml
+$ vi user-data.yml
 ```
 
 Edit the `cluster.tf`:
@@ -88,7 +88,7 @@ $ vi cluster.tf
 
 ### Apply to the development
 
-Upload `cloud-config.yml` to instances:
+Upload `user-data.yml` to instances:
 
 ```sh
 $ vagrant provision

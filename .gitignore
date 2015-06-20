@@ -9,7 +9,7 @@ vendor
 .terraform
 
 # CoreOS
-cloud-config.yml
+user-data.yml
 
 # Direnv
 .envrc
