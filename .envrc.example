@@ -5,6 +5,10 @@ export PUBLIC_SSH_PORT=2222
 # Atlas
 export ATLAS_TOKEN=<your atlas token>
 
+# DigitalOcean
+export DIGITALOCEAN_CLIENT_ID=<your digitalocean id>
+export DIGITALOCEAN_TOKEN=<your digitalocean token>
+
 # Terraform
 export TF_VAR_atlas_token=$ATLAS_TOKEN
 export TF_VAR_digitalocean_token=<your digitalocean token>
