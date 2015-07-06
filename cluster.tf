@@ -15,10 +15,10 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_droplet" "core-1" {
-    image              = "11833262"
+    image              = "12382129"
     name               = "core-1"
     region             = "sgp1"
-    size               = "512mb"
+    size               = "1gb"
     ipv6               = false
     private_networking = true
     ssh_keys           = ["${var.ssh_key_id}"]
