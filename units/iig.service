@@ -9,7 +9,7 @@ TimeoutStartSec=120
 ExecStartPre=-/usr/bin/docker kill iig
 ExecStartPre=-/usr/bin/docker rm iig
 ExecStartPre=/usr/bin/docker pull tomohiro/iig
-ExecStart=/usr/bin/docker run --rm --name iig -p 16704:16704 tomohiro/iig
+ExecStart=/usr/bin/docker run --rm --name iig --net container:znc tomohiro/iig
 ExecStop=/usr/bin/docker stop iig
 
 [X-Fleet]
