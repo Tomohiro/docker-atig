@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/atig/atig.git
-  revision: b822c165c82ca52ac26aaf8f5ac0fa82b4a17880
+  revision: c785361a32fd82024d141fddc7e5a85e17559805
   specs:
     atig (0.4.5)
       net-irc
@@ -25,3 +25,6 @@ PLATFORMS
 
 DEPENDENCIES
   atig!
+
+BUNDLED WITH
+   1.10.5
