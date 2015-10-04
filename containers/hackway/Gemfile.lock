@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Tomohiro/hackway.git
-  revision: b41008603b4440fa437b434e4ae0228b644f6d52
+  revision: 14b4cd08c2c26ea1c68bc2b285a0d005bd644469
   specs:
     hackway (0.0.1)
       net-irc
