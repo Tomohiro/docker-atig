@@ -1,6 +1,8 @@
 ZNC IRC bouncer for Docker
 ================================================================================
 
+[![](https://badge.imagelayers.io/tomohiro/znc:latest.svg)](https://imagelayers.io/?images=tomohiro/znc:latest 'Get your own badge on imagelayers.io')
+
 
 Getting Started
 --------------------------------------------------------------------------------
