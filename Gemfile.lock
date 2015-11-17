@@ -13,7 +13,7 @@ GEM
     middleware (0.1.0)
     multipart-post (2.0.0)
     thor (0.18.1)
-    tugboat (2.0.0)
+    tugboat (2.0.1)
       barge (~> 0.10.0)
       middleware (~> 0.1.0)
       thor (~> 0.18.1)
