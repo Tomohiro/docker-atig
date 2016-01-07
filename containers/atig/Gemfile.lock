@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/atig/atig.git
-  revision: c785361a32fd82024d141fddc7e5a85e17559805
+  revision: 16de45180c0b32ebf87a66b77f5ab23f20bacb15
   specs:
-    atig (0.4.5)
+    atig (0.5.0)
       net-irc
       oauth
       sqlite3 (>= 1.3.2)
@@ -13,7 +13,7 @@ GEM
   specs:
     net-irc (0.0.9)
     oauth (0.4.7)
-    sqlite3 (1.3.10)
+    sqlite3 (1.3.11)
     twitter-text (1.7.0)
       unf (~> 0.1.0)
     unf (0.1.4)
@@ -27,4 +27,4 @@ DEPENDENCIES
   atig!
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
