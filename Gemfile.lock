@@ -1,10 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    barge (0.10.0)
+    barge (0.12.0)
       faraday (~> 0.9)
-      faraday_middleware (~> 0.9)
-      hashie (~> 3.2)
+      faraday_middleware (~> 0.10)
+      hashie (~> 3.4)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.10.0)
@@ -13,8 +13,8 @@ GEM
     middleware (0.1.0)
     multipart-post (2.0.0)
     thor (0.18.1)
-    tugboat (2.1.0)
-      barge (~> 0.10.0)
+    tugboat (2.2.1)
+      barge (~> 0.12.0)
       middleware (~> 0.1.0)
       thor (~> 0.18.1)
 
