@@ -2,10 +2,13 @@
 FROM          ruby:2.3-alpine
 MAINTAINER    Tomohiro TAIRA <tomohiro.t@gmail.com>
 
-RUN           apk add --update --no-cache git
+RUN           apk add --no-cache git build-base libxml2-dev libxslt-dev sqlite-dev
 
 # Throw errors if Gemfile has been modified since Gemfile.lock
 RUN           bundle config --global frozen 1
+
+RUN           gem install nokogiri -- --use-system-libraries
+RUN           gem install sqlite3  -- --use-system-libraries
 
 RUN           mkdir -p /usr/src/app
 WORKDIR       /usr/src/app
