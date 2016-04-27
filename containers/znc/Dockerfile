@@ -1,11 +1,7 @@
-FROM        buildpack-deps:stretch
+FROM        alpine:3.3
 MAINTAINER  Tomohiro TAIRA <tomohiro.t@gmail.com>
 
-RUN         apt-get update
-RUN         apt-get upgrade -y
-RUN         apt-get install -y znc
-RUN         apt-get autoremove -y
-RUN         apt-get clean
+RUN         apk --update --no-cache add znc znc-modperl znc-modtcl znc-extra ca-certificates
 
 EXPOSE      6667
 ENTRYPOINT  ["znc"]
