@@ -7,8 +7,9 @@ RUN           apk add --no-cache git build-base libxml2-dev libxslt-dev sqlite-d
 # Throw errors if Gemfile has been modified since Gemfile.lock
 RUN           bundle config --global frozen 1
 
-RUN           gem install nokogiri -- --use-system-libraries
-RUN           gem install sqlite3  -- --use-system-libraries
+# Bundler build configuration
+RUN           bundle config build.nokogiri --use-system-libraries
+RUN           bundle config build.sqlite3  --use-system-libraries
 
 RUN           mkdir -p /usr/src/app
 WORKDIR       /usr/src/app
