@@ -8,8 +8,8 @@ RUN           apk add --no-cache git build-base libxml2-dev libxslt-dev sqlite-d
 RUN           bundle config --global frozen 1
 
 # Bundler build configuration
-RUN           bundle config build.nokogiri --use-system-libraries
-RUN           bundle config build.sqlite3  --use-system-libraries
+RUN           bundle config --global build.nokogiri --use-system-libraries
+RUN           bundle config --global build.sqlite3  --use-system-libraries
 
 RUN           mkdir -p /usr/src/app
 WORKDIR       /usr/src/app
