@@ -1,4 +1,4 @@
-FROM        ruby:2.2-onbuild
+FROM        tomohiro/ruby:latest
 MAINTAINER  Tomohiro TAIRA <tomohiro.t@gmail.com>
 
 EXPOSE      16704
